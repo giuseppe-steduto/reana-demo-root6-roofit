@@ -13,7 +13,7 @@ workflow:
     steps:
       - name: gendata
         environment: 'reanahub/reana-env-root6:6.18.04'
-        kubernetes_memory_limit: '256Mi'
+        kubernetes_memory_limit: '15Gi'
         commands:
         - mkdir -p results && root -b -q 'code/gendata.C(${events},"${data}")'
       - name: fitdata
