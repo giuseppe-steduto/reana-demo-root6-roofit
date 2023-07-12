@@ -12,7 +12,7 @@ Feature: Workspace files
 
   Scenario: This test fails
     When the workflow is finished
-    Then the status should be "failed"
+    Then the workflow status should be "failed"
 
   Scenario: The total workspace size remains within reasonable limits
     When the workflow is finished
