@@ -13,3 +13,7 @@ workflow:
 outputs:
   files:
     - outputs/plot.png
+tests:
+  files:
+    - tests/log-messages.feature
+    - tests/cwl/another-feature.feature
