@@ -17,10 +17,13 @@ rule all:
         "results/plot.png"
 
 rule gendata:
+    """
+    Rule for generating data. It uses gendata.C script to generate signal and background data.
+    """
     input:
         gendata_tool=config["gendata"]
     output:
-        "results/data.root"
+        report("results/data.root", caption="report/signal-background-data.rst", category="Workflow output files")
     params:
         events=config["events"]
     container:
@@ -31,11 +34,15 @@ rule gendata:
         "mkdir -p results && root -b -q '{input.gendata_tool}({params.events},\"{output}\")'"
 
 rule fitdata:
+    """
+    Rule for fitting the data. It uses fitdata.C script for fitting the signal and background data.
+    """
     input:
         fitdata_tool=config["fitdata"],
         data="results/data.root"
     output:
-        "results/plot.png"
+        report("results/plot.png", caption="report/plot.rst", category="Workflow output files")
+
     container:
         "docker://docker.io/reanahub/reana-env-root6:6.18.04"
     resources:

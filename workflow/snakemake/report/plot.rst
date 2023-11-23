@@ -1,0 +1,1 @@
+Plot demonstrating how the signal data is fitted against the model.
